@@ -108,7 +108,7 @@ const checkRow = () => {
     if (currentTile === 5) {
         console.log(guessedWord, correctWord)
         if (correctWord == guessedWord) {
-            showMessage('Magnificent!')
+            showMessage('Great job!')
         }
     }
 }
@@ -117,4 +117,5 @@ const showMessage = (message) => {
     const messageElement = document.createElement('p')
     messageElement.textContent = message;
     messageDisplay.append(messageElement)
+    setTimeout(() => messageDisplay.removeChild(messageElement), 3000)
 }
