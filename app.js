@@ -45,6 +45,7 @@ const guessRows = [
 
 let currentRow = 0;
 let currentTile = 0;
+let isGameOver = false;
 
 guessRows.forEach((guessRow, guessRowIndex)=> {
    const rowElement = document.createElement('div')
@@ -105,10 +106,22 @@ const deleteLetter = () => {
 
 const checkRow = () => {
     const guessedWord = guessRows[currentRow].join('') // grab the current row and joins it into a correctWord 
-    if (currentTile === 5) {
+    if (currentTile > 4) {
         console.log(guessedWord, correctWord)
         if (correctWord == guessedWord) {
             showMessage('Great job!')
+            isGameOver = true;
+            return
+        } else { 
+            if (currentRow >= 5) {
+                isGameOver = false
+                showMessage('Game Over!')
+                return
+            }
+            if (currentRow < 5) {
+                currentRow++
+                currentTile = 0
+            }
         }
     }
 }
