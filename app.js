@@ -108,6 +108,7 @@ const checkRow = () => {
     const guessedWord = guessRows[currentRow].join('') // grab the current row and joins it into a correctWord 
     if (currentTile > 4) {
         console.log(guessedWord, correctWord)
+        flipTile()
         if (correctWord == guessedWord) {
             showMessage('Great job!')
             isGameOver = true;
@@ -132,3 +133,19 @@ const showMessage = (message) => {
     messageDisplay.append(messageElement)
     setTimeout(() => messageDisplay.removeChild(messageElement), 3000)
 }
+
+const flipTile = () => {
+    const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes
+    rowTiles.forEach((tile, i) => {
+        const letterData = tile.getAttribute('data')
+
+        if (letterData === correctWord[i]) {
+            tile.classList.add('green-overlay')
+        } else if (correctWord.includes(letterData)) {
+            tile.classList.add('yellow-overlay')
+        } else {
+            tile.classList.add('grey-overlay')
+        }
+    })
+}
+
