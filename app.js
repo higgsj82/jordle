@@ -139,13 +139,16 @@ const flipTile = () => {
     rowTiles.forEach((tile, i) => {
         const letterData = tile.getAttribute('data')
 
-        if (letterData === correctWord[i]) {
-            tile.classList.add('green-overlay')
-        } else if (correctWord.includes(letterData)) {
-            tile.classList.add('yellow-overlay')
-        } else {
-            tile.classList.add('grey-overlay')
-        }
+        setTimeout(() => {
+            tile.classList.add('flip')
+            if (letterData === correctWord[i]) {
+                tile.classList.add('green-overlay')
+            } else if (correctWord.includes(letterData)) {
+                tile.classList.add('yellow-overlay')
+            } else {
+                tile.classList.add('grey-overlay')
+            }
+        }, 500 * i)
     })
 }
 
