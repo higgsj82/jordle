@@ -1,0 +1,19 @@
+{
+  "name": "wordle",
+  "version": "1.0.0",
+  "description": "jordle a wordle clone",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/higgsj82/jordle.git"
+  },
+  "author": "Jay Higgs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/higgsj82/jordle/issues"
+  },
+  "homepage": "https://github.com/higgsj82/jordle#readme"
+}
