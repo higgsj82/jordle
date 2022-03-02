@@ -134,6 +134,11 @@ const showMessage = (message) => {
     setTimeout(() => messageDisplay.removeChild(messageElement), 3000)
 }
 
+const addColorToKeyboard = (letterKey, color) => {
+    const key = document.getElementById(letterKey)
+    key.classList.add(color)
+}
+
 const flipTile = () => {
     const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes
     rowTiles.forEach((tile, i) => {
@@ -143,10 +148,13 @@ const flipTile = () => {
             tile.classList.add('flip')
             if (letterData === correctWord[i]) {
                 tile.classList.add('green-overlay')
+                addColorToKeyboard(letterData, 'green-overlay')
             } else if (correctWord.includes(letterData)) {
                 tile.classList.add('yellow-overlay')
+                addColorToKeyboard(letterData, 'yellow-overlay')
             } else {
                 tile.classList.add('grey-overlay')
+                addColorToKeyboard(letterData, 'grey-overlay')
             }
         }, 500 * i)
     })

@@ -102,7 +102,7 @@ body {
     border: none !important;
 }
 .yellow-overlay {
-    background-color: #b59f3a;
+    background-color: #b59f3a !important;
     border: none !important;
 }
 .green-overlay {
