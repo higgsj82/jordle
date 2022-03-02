@@ -141,21 +141,33 @@ const addColorToKeyboard = (letterKey, color) => {
 
 const flipTile = () => {
     const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes
+    let checkWord = correctWord
+    const guess = []
+
+    rowTiles.forEach(tile => {
+        guess.push({ letter: tile.getAttribute('data'), color: 'grey-overlay'})
+    })
+
+    guess.forEach((guess, i) => {
+        if (guess.letter == correctWord[i]) {
+            guess.color = 'green-overlay'
+            checkWord = checkWord.replace(guess.letter, '')
+        }
+    })
+
+    guess.forEach((guess, i) => {
+        if (checkWord.includes(guess.letter)) {
+            guess.color = 'yellow-overlay'
+            checkWord = checkWord.replace(guess.letter, '')
+        }
+    })
+
     rowTiles.forEach((tile, i) => {
         const letterData = tile.getAttribute('data')
 
         setTimeout(() => {
-            tile.classList.add('flip')
-            if (letterData === correctWord[i]) {
-                tile.classList.add('green-overlay')
-                addColorToKeyboard(letterData, 'green-overlay')
-            } else if (correctWord.includes(letterData)) {
-                tile.classList.add('yellow-overlay')
-                addColorToKeyboard(letterData, 'yellow-overlay')
-            } else {
-                tile.classList.add('grey-overlay')
-                addColorToKeyboard(letterData, 'grey-overlay')
-            }
+            tile.classList.add(guess[i].color)
+            addColorToKeyboard(guess[i].letter, guess[i].color)
         }, 500 * i)
     })
 }
