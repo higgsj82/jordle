@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/higgsj82/jordle/issues"
   },
-  "homepage": "https://github.com/higgsj82/jordle#readme"
+  "homepage": "https://github.com/higgsj82/jordle#readme",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
 }
