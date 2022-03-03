@@ -119,8 +119,15 @@ const deleteLetter = () => {
 
 const checkRow = () => {
     const guessedWord = guessRows[currentRow].join('') // grab the current row and joins it into a correctWord 
+    console.log('guess', guessedWord)
     if (currentTile > 4) {
-        console.log(guessedWord, correctWord)
+        fetch(`http://localhost:3000/check/?word=${guessedWord}`)
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+            })
+            .catch(err => console.log(err))
+
         flipTile()
         if (correctWord == guessedWord) {
             showMessage('Great job!')
