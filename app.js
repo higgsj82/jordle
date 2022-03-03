@@ -2,7 +2,20 @@ const tileDisplay = document.querySelector('.tile-container')
 const keyboard = document.querySelector('.key-container')
 const messageDisplay = document.querySelector('.message-container')
 
-const correctWord = 'SUPER'
+let correctWord;
+
+const getWord = () => {
+    fetch('http://localhost:3000/word')
+        .then(response => response.json())
+        .then(json => {
+            console.log(json)
+            correctWord = json.toUpperCase()
+        })
+        .catch(err => console.log(err))
+}
+
+getWord()
+
 const keys = [
     'Q',
     'W',
