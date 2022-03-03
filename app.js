@@ -137,7 +137,7 @@ const checkRow = () => {
                         return
                     } else {
                         if (currentRow >= 5) {
-                            isGameOver = false
+                            isGameOver = true
                             showMessage('Game Over!')
                             return
                         }
