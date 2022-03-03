@@ -124,26 +124,31 @@ const checkRow = () => {
         fetch(`http://localhost:3000/check/?word=${guessedWord}`)
             .then(response => response.json())
             .then(json => {
-                console.log(json)
+                // console.log(json)
+                if (json == "Entry word not found") {
+                    showMessage('Not a word')
+                    return
+                } else {
+                    flipTile()
+                    if (correctWord == guessedWord) {
+                        showMessage('Great job!')
+                        isGameOver = true;
+                        return
+                    } else {
+                        if (currentRow >= 5) {
+                            isGameOver = false
+                            showMessage('Game Over!')
+                            return
+                        }
+                        if (currentRow < 5) {
+                            currentRow++
+                            currentTile = 0
+                        }
+                    }
+                }
             })
             .catch(err => console.log(err))
 
-        flipTile()
-        if (correctWord == guessedWord) {
-            showMessage('Great job!')
-            isGameOver = true;
-            return
-        } else { 
-            if (currentRow >= 5) {
-                isGameOver = false
-                showMessage('Game Over!')
-                return
-            }
-            if (currentRow < 5) {
-                currentRow++
-                currentTile = 0
-            }
-        }
     }
 }
 

@@ -43,6 +43,7 @@ app.get('/check', (req, res) => {
 
     axios.request(options).then((response) => {
         console.log(response.data);
+        res.json(response.data.result_msg)
     }).catch((error) => {
         console.error(error);
     });
