@@ -46,6 +46,10 @@ body {
     margin: 4px;
 }
 
+#selected {
+    background-color: #b59f3a !important;
+}
+
 .tile-container {
     width: 330px;
     margin-bottom: 30px;

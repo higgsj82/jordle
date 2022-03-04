@@ -7,15 +7,25 @@ let correctWord = "GREAT";
 let wordLength;
 const wordLengths = [4,5,6]
 
+const clearAttributes = () => {
+    const attribute = 'word-length'
+    if (document.getElementById("selected")) {
+        document.getElementById("selected").setAttribute('id', attribute)
+    }
+}
 
 wordLengths.forEach(num => {
     const buttonElement = document.createElement('button')
     buttonElement.textContent = `${num} letter word` 
-    buttonElement.setAttribute('id', 'word-length-' + num)
-    buttonElement.addEventListener('click', () => wordLength = num)
+    buttonElement.setAttribute('id', 'word-length')
+    buttonElement.addEventListener('click', () => {
+        clearAttributes()
+        wordLength = num;
+        buttonElement.setAttribute('id', 'selected')
+    })
     quantityToggle.append(buttonElement)
 })
-    
+
 
 // const getWord = () => {
 //     fetch('http://localhost:3000/word')
