@@ -1,20 +1,33 @@
 const tileDisplay = document.querySelector('.tile-container')
 const keyboard = document.querySelector('.key-container')
 const messageDisplay = document.querySelector('.message-container')
+const quantityToggle = document.querySelector('.quantity-toggle')
 
-let correctWord;
+let correctWord = "GREAT";
+let wordLength;
+const wordLengths = [4,5,6]
 
-const getWord = () => {
-    fetch('http://localhost:3000/word')
-        .then(response => response.json())
-        .then(json => {
-            // console.log(json)
-            correctWord = json.toUpperCase()
-        })
-        .catch(err => console.log(err))
-}
 
-getWord()
+wordLengths.forEach(num => {
+    const buttonElement = document.createElement('button')
+    buttonElement.textContent = `${num} letter word` 
+    buttonElement.setAttribute('id', 'word-length-' + num)
+    buttonElement.addEventListener('click', () => wordLength = num)
+    quantityToggle.append(buttonElement)
+})
+    
+
+// const getWord = () => {
+//     fetch('http://localhost:3000/word')
+//         .then(response => response.json())
+//         .then(json => {
+//             // console.log(json)
+//             correctWord = json.toUpperCase()
+//         })
+//         .catch(err => console.log(err))
+// }
+
+// getWord()
 
 const keys = [
     'Q',
