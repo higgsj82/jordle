@@ -8,7 +8,7 @@ const getWord = () => {
     fetch('http://localhost:3000/word')
         .then(response => response.json())
         .then(json => {
-            console.log(json)
+            // console.log(json)
             correctWord = json.toUpperCase()
         })
         .catch(err => console.log(err))
@@ -104,7 +104,7 @@ const addLetter = (letter) => {
         guessRows[currentRow][currentTile] = letter
         tile.setAttribute('data', letter) // gonna be used to color our letters later
         currentTile++
-        console.log('guess rows:', guessRows)
+        // console.log('guess rows:', guessRows)
     }
 }
 
@@ -120,7 +120,7 @@ const deleteLetter = () => {
 
 const checkRow = () => {
     const guessedWord = guessRows[currentRow].join('') // grab the current row and joins it into a correctWord 
-    console.log('guess', guessedWord)
+    // console.log('guess', guessedWord)
     if (currentTile > 4) {
         fetch(`http://localhost:3000/check/?word=${guessedWord}`)
             .then(response => response.json())
